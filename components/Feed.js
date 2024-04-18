@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 
 import PromptCard from "./PromptCard";
 
@@ -10,11 +10,13 @@ const PromptCardList = ({ data, handleTagClick }) => {
         data && (
             <div className='mt-16 prompt_layout'>
                 {data.map((post) => (
-                    <PromptCard
-                        key={post._id}
-                        post={post}
-                        handleTagClick={handleTagClick}
-                    />
+                    <Suspense key={post._id}>
+                        <PromptCard
+                            key={post._id}
+                            post={post}
+                            handleTagClick={handleTagClick}
+                        />
+                    </Suspense>
                 ))}
             </div>)
     );
@@ -88,11 +90,12 @@ const Feed = () => {
                     data={searchedResults}
                     handleTagClick={handleTagClick}
                 />
+
             ) : (
                 <PromptCardList data={allPosts} handleTagClick={handleTagClick} />
             )}
-        </section>
+        </section >
     );
 };
 
-export default Feed;
+export default Feed;;
