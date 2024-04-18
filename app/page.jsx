@@ -1,4 +1,5 @@
 import Feed from "@components/Feed";
+import { Suspense } from "react";
 
 const Home = () => (
     <section className='w-full flex-center flex-col'>
@@ -12,7 +13,10 @@ const Home = () => (
             discover, create and share creative prompts
         </p>
 
-        <Feed />
+        <Suspense>
+            <Feed />
+        </Suspense>
+
     </section>
 );
 

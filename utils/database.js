@@ -10,11 +10,18 @@ export const connectToDB = async () => {
         return;
     }
 
+    // [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated 
+    // option: useNewUrlParser has no effect since Node.js Driver 
+    // version 4.0.0 and will be removed in the next major version
+
+    // [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated 
+    // option: useUnifiedTopology has no effect since Node.js 
+    // Driver version 4.0.0 and will be removed in the next major version
     try {
         await mongoose.connect(process.env.MONGODB_URI, {
             dbName: "share_prompt",
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
+            // useNewUrlParser: true,
+            // useUnifiedTopology: true,
         });
 
         isConnected = true;
