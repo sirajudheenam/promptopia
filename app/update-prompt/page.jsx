@@ -2,11 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from 'react';
 
 import Form from "@components/Form";
 
 const UpdatePrompt = () => {
     const router = useRouter();
+    // useSearchParams() should be wrapped in a suspense boundary 
+    // at page "/update-prompt". 
+    // Read more: https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
+
     const searchParams = useSearchParams();
     const promptId = searchParams.get("id");
 
@@ -53,13 +58,16 @@ const UpdatePrompt = () => {
     };
 
     return (
-        <Form
-            type='Edit'
-            post={post}
-            setPost={setPost}
-            submitting={submitting}
-            handleSubmit={updatePrompt}
-        />
+        // You could have a loading skeleton as the `fallback` too
+        <Suspense>
+            <Form
+                type='Edit'
+                post={post}
+                setPost={setPost}
+                submitting={submitting}
+                handleSubmit={updatePrompt}
+            />
+        </Suspense>
     );
 };
 
