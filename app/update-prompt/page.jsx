@@ -59,16 +59,21 @@ const UpdatePrompt = () => {
 
     return (
         // You could have a loading skeleton as the `fallback` too
-        <Suspense>
-            <Form
-                type='Edit'
-                post={post}
-                setPost={setPost}
-                submitting={submitting}
-                handleSubmit={updatePrompt}
-            />
-        </Suspense>
+        <Form
+            type='Edit'
+            post={post}
+            setPost={setPost}
+            submitting={submitting}
+            handleSubmit={updatePrompt}
+        />
     );
 };
 
-export default UpdatePrompt;
+// export default UpdatePrompt;
+export default function UpdatePromptWithSuspense() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <UpdatePrompt />
+        </Suspense>
+    );
+}

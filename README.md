@@ -11,16 +11,35 @@ pnpm install bcrypt mongodb mongoose next-auth
 ## .env file with following contents
 
 ```bash
+# Development environment
 NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_URL_INTERNAL=http://localhost:3000
 # https://www.cryptool.org/en/cto/openssl/ # or on your terminal run
 # openssl rand -base64 32
 NEXTAUTH_SECRET=<result of - openssl rand -base64 32>
-
 MONGODB_URI=mongodb+srv://<username>:<password>@atlas-uri
 GOOGLE_ID=ABCDEF123459.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=<google-oauth-client-secret>
+# Prod Environment
+# NEXTAUTH_URL=https://promptopia.technotipstoday.dev
+# NEXTAUTH_URL_INTERNAL=https://promptopia.technotipstoday.dev
+# NEXTAUTH_SECRET=<generated openssl random string>
+# GOOGLE_ID=<GOOGLE_ID>.apps.googleusercontent.com
+# GOOGLE_CLIENT_SECRET=<GOOGLE_SECRET>
+
 ```
+
+## Google Auth Setup:
+
+```bash
+# Authorised JavaScript origins: https://<your-domain>
+# Authorised redirect URIs: https://<your-domain>/api/auth/callback/google
+```
+
+
+
+
+http://localhost:3000/api/auth/callback/google
 
 
 

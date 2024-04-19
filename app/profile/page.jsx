@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 
 import Profile from "@components/Profile";
@@ -19,7 +19,6 @@ const MyProfile = () => {
 
             setMyPosts(data);
         };
-
         if (session?.user.id) fetchPosts();
     }, [session?.user.id]);
 
@@ -47,15 +46,40 @@ const MyProfile = () => {
         }
     };
 
+    const UserDetails = () => {
+        session && console.log(session);
+        return (
+            <>
+                <div>
+                    <h1>Name: {session?.user?.name}</h1>
+                    <h1>ID: {session?.id}</h1>
+                    <h1>Email: {session?.user?.email}</h1>
+                    <h1>Image: {session?.user?.image}</h1>
+                    <h1>Expires: {session?.expires}</h1>
+                </div>
+            </>
+        );
+    };
     return (
-        <Profile
-            name='My'
-            desc='Welcome to your personalized profile page. Share your exceptional prompts and inspire others with the power of your imagination'
-            data={myPosts}
-            handleEdit={handleEdit}
-            handleDelete={handleDelete}
-        />
+        <>
+            <Profile
+                name='My'
+                desc={`Welcome to your personalized profile page. Share your exceptional prompts and inspire others with the power of your imagination`}
+                data={myPosts}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+            />
+            <UserDetails />
+        </>
     );
 };
 
-export default MyProfile;
+// export default MyProfile;
+
+export default function MyProfileSuspense() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <MyProfile />
+        </Suspense>
+    );
+}

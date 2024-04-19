@@ -21,12 +21,15 @@ const Nav = () => {
     return (
         <nav className='flex-between w-full mb-16 pt-3'>
             <Link href='/' className='flex gap-2 flex-center'>
+                {/* Image with src "/assets/images/logo.svg" was detected as the Largest Contentful Paint (LCP). Please add the "priority" property if this image is above the fold. */}
+                {/* Read more: https://nextjs.org/docs/api-reference/next/image#priority */}
                 <Image
                     src='/assets/images/logo.svg'
                     alt='logo'
                     width={30}
                     height={30}
                     className='object-contain'
+                    priority={false}
                 />
                 <p className='logo_text'>Promptopia</p>
             </Link>
