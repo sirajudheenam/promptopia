@@ -3,10 +3,9 @@
 - [MongoDB Database from Atlas](https://cloud.mongodb.com)
 - [Google Auth API - Credentials and OAuth Consent Screen needs to be created](https://console.cloud.google.com/apis/credentials)
 
-- Demo Site is deployed [here](https://promptopia.technotipstoday.dev) 
-```bash
-pnpm install bcrypt mongodb mongoose next-auth
-```
+- [Demo Site](https://promptopia.technotipstoday.dev) is deployed on Vercel.  
+
+
 ## .env file with following contents
 
 ```bash
@@ -26,6 +25,12 @@ GOOGLE_CLIENT_SECRET=<google-oauth-client-secret>
 # GOOGLE_ID=<GOOGLE_ID>.apps.googleusercontent.com
 # GOOGLE_CLIENT_SECRET=<GOOGLE_SECRET>
 
+```
+
+## Install relevant packages
+
+```bash
+pnpm install bcrypt mongodb mongoose next-auth
 ```
 
 ## Google Auth Setup:
