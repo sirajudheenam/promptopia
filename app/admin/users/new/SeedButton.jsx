@@ -25,7 +25,7 @@ export default async function SeedButton() {
             const data = await response.json();
             console.log(data.message); // Database seeded successfully
             if (response.ok) {
-                router.push("/experiment/users");
+                router.push("/admin/users");
             }
         } catch (error) {
             console.error('Error seeding database:', error);

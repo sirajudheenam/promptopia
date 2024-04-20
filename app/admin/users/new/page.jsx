@@ -2,7 +2,7 @@
 
 import { Suspense, useState } from 'react';
 import Router from 'next/router';
-import SeedButton from '@app/experiment/users/new/SeedButton';
+import SeedButton from '@app/admin/users/new/SeedButton';
 
 const NewUser = () => {
     const [formData, setFormData] = useState({

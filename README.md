@@ -43,9 +43,9 @@ pnpm install bcrypt mongodb mongoose next-auth
 
 http://localhost:3000/api/auth/callback/google
 
-Do CRUD Operations with /experiment route.
+Do CRUD Operations with /admin route.
 
-- [http://localhost:3000/experiment/users]
+- [http://localhost:3000/admin/users]
 
 TODO: 
 - Find out why Signin / Login does not create user.
