@@ -4,22 +4,11 @@ import GoogleProvider from 'next-auth/providers/google';
 import User from '@models/user';
 import { connectToDB } from '@utils/database';
 
-// console.log({
-//     clientId: process.env.GOOGLE_ID,
-//     clientSecret: process.env.GOOGLE_CLIENT_SECRET
-// });
 const handler = NextAuth({
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            // authorization: {
-            //     params: {
-            //         prompt: "consent",
-            //         access_type: "offline",
-            //         response_type: "code"
-            //     }
-            // }
         })
     ],
     callback: {
@@ -32,7 +21,6 @@ const handler = NextAuth({
                     session.user.id = sessionUser._id.toString();
                 }
 
-                // session.user.id = sessionUser._id.toString();
                 return session;
             } catch (error) {
                 console.error('Error retrieving user session:', error);
