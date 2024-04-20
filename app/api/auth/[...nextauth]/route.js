@@ -24,10 +24,21 @@ const handler = NextAuth({
     ],
     callback: {
         async session({ session }) {
-            // store the user id from MongoDB to session
-            const sessionUser = await User.findOne({ email: session.user.email });
-            session.user.id = sessionUser._id.toString();
-            return session;
+
+            try {
+                // store the user id from MongoDB to session
+                const sessionUser = await User.findOne({ email: session.user.email });
+                if (sessionUser) {
+                    session.user.id = sessionUser._id.toString();
+                }
+
+                // session.user.id = sessionUser._id.toString();
+                return session;
+            } catch (error) {
+                console.error('Error retrieving user session:', error);
+                throw new Error('Failed to retrieve user session');
+            }
+
         },
         async signIn({ account, profile, user, credentials }) {
             try {

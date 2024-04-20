@@ -8,6 +8,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -16,6 +17,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".",
+    "types": [
+      "@testing-library/jest-dom"
+    ],
     "plugins": [
       {
         "name": "next"
@@ -23,7 +28,7 @@
     ],
     "paths": {
       "@*": [
-        "./*"
+        "./*",
       ]
     }
   },
@@ -32,7 +37,14 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "tailwind.config.js"
+    "tailwind.config.js",
+    "__tests__/**/*.test.js",
+    "__tests__/**/*.test.jsx",
+    "__tests__/**/*.test.ts",
+    "__tests__/**/*.test.tsx",
+    "__tests__/**/*.js",
+    "jest.config.ts",
+    "types.d.ts",
   ],
   "exclude": [
     "node_modules"

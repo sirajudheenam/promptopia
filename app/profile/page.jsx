@@ -47,7 +47,6 @@ const MyProfile = () => {
     };
 
     const UserDetails = () => {
-        session && console.log(session);
         return (
             <>
                 <div>

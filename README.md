@@ -2,9 +2,8 @@
 
 - [MongoDB Database from Atlas](https://cloud.mongodb.com)
 - [Google Auth API - Credentials and OAuth Consent Screen needs to be created](https://console.cloud.google.com/apis/credentials)
-Create them with http://localhost:3000
 
-
+- Demo Site is deployed [here](https://promptopia.technotipstoday.dev) 
 ```bash
 pnpm install bcrypt mongodb mongoose next-auth
 ```
@@ -37,10 +36,57 @@ GOOGLE_CLIENT_SECRET=<google-oauth-client-secret>
 ```
 
 
-
-
 http://localhost:3000/api/auth/callback/google
 
+Do CRUD Operations with /experiment route.
+
+- [http://localhost:3000/experiment/users]
+
+TODO: 
+- Find out why Signin / Login does not create user.
+- Fix when clicked on User it supposed to list those prompts uploaded by the user.
+- Add individual user
+- Delete each user
+- Delete all users which were intially seeded.
+- Create example users.
+
+
+Update Log: 
+19 April 2014 - Adding Test.
+
+## Test Setup
+```bash
+# based on https://nextjs.org/docs/app/building-your-application/testing/jest 
+pnpm install -D jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom
+pnpm create jest@latest
+
+# jest.config.ts
+import type { Config } from 'jest'
+import nextJest from 'next/jest.js'
+ 
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: './',
+})
+ 
+// Add any custom config to be passed to Jest
+const config: Config = {
+  coverageProvider: 'v8',
+  testEnvironment: 'jsdom',
+  // Add more setup options before each test is run
+  // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+}
+ 
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+export default createJestConfig(config)
+---
+
+
+```
+Troubleshooting:
+
+## to clear test (jest) cache
+npx jest --clearCache
 
 
 ----------------------------------------------------------------
